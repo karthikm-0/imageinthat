@@ -1,0 +1,15 @@
+{
+  "description": "some bullshit",
+  "requirements": [
+    "You just threw a small party and the guests just left. You want to clean up the dishes before going to bed.",
+    "You want the dishes in the sink to be rinsed before being put away in the cabinets.",
+    "You don’t want your newly washed dishes which are wet to affect the dry dishes in your cabinet so you want the robot to place it precisely. If they touch, the dishes will get wet. This also applies to the cups.",
+    "Some donuts you provided your guests were not finished. You want them sorted into one common area but you don’t want them to be placed directly on the counters as this will stain them.",
+    "You want to thoroughly wash the dishes that became sticky because of the donuts. You want the robot to use the sponge to soak each of these dishes before washing.",
+    "The sink spout does not move so dishes must be placed so that they can be cleaned.",
+    "You don’t want other dishes nearby to get soapy while applying soap and washing sticky dishes. They should not be close by.",
+    "When washing the utensils, you want dishes of the same type to be washed together. Some utensils are also sticky from the donut so they also need to be soaped.",
+    "You should stack new dishes in the cupboard by category.",
+    "After washing the utensils, you want them organized so that the categories alternate rather than have them next to each other."
+  ]
+}
