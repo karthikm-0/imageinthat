@@ -1,0 +1,11 @@
+{
+  "description": "You are trying to organize your unripe and ripe fruits. This includes unripe bananas and ripe bananas. This also includes unripe apples (green tint) and ripe apples (red). You want to make applesauce with the ripe apples.",
+  "requirements": [
+    "Item categories: [unripe bananas, ripe bananas, unripe apples (green tint), ripe apples (red)]",
+    "A bottle is blocking the bowls so put it away in the right location.",
+    "Arrange the ripe apples in one bowl ensuring the smaller ripe apples are not crushed by the larger ripe ones.",
+    "Sort the unripe and ripe bananas into separate bowls.",
+    "Leave the unripe apples on the counter as they are not needed for the applesauce.",
+    "Do not perform any actions that are not explicitly mentioned in the requirements."
+  ]
+}

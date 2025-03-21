@@ -10,7 +10,7 @@ import { generateCombinedImage } from "./imageUtils";
 import { StepToImageSvg } from "./StepToImageSvg";
 import { AnimateBetweenSteps } from "./Animate";
 import { generateNextStates } from "./FlaskApi";
-import { useExperiment, useConfiguration } from "@hcikit/react";
+import { useExperiment } from "@hcikit/react";
 
 interface StepProps {
   env: Environment;
@@ -97,7 +97,10 @@ const Step: React.FC<StepProps> = ({
         const newEnvStates = prevEnvAndEnvStates.envStates.map((state, i) =>
           i === index ? updateCurrentEnvState : state
         );
-        return { ...prevEnvAndEnvStates, envStates: newEnvStates };
+        return {
+          ...prevEnvAndEnvStates,
+          envStates: newEnvStates as EnvironmentState[],
+        };
       });
 
       // Lock the caption to the current state now that we have updated it

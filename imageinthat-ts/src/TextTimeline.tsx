@@ -6,9 +6,8 @@ import {
 } from "./interfaces";
 import TextStep from "./TextStep";
 import StepToImageSvg from "./StepToImageSvg";
-import { useExperiment, useConfiguration } from "@hcikit/react";
+import { useExperiment } from "@hcikit/react";
 import TaskTextOverlay from "./TaskTextOverlay";
-import { highestDimensions } from "./config";
 
 interface TextTimelineProps {
   taskName: string;
@@ -24,7 +23,6 @@ const TextTimeline: React.FC<TextTimelineProps> = ({ taskName }) => {
   const [textSteps, setTextSteps] = useState<TextStepInterface[]>([]);
 
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const timelineRef = useRef<HTMLDivElement>(null!);
   const textStepRefs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -171,7 +169,9 @@ const TextTimeline: React.FC<TextTimelineProps> = ({ taskName }) => {
                 setTextSteps={setTextSteps}
                 handleCopyStep={handleCopyStep} // Pass the function
                 handleAddStep={handleAddStep} // Pass the function
-                ref={(el) => (textStepRefs.current[index] = el)}
+                ref={(el: HTMLDivElement | null) => {
+                  textStepRefs.current[index] = el;
+                }}
               />
             ))}
           </div>

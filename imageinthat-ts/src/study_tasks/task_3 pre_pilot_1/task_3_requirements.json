@@ -1,0 +1,16 @@
+{
+  "description": "some bullshit",
+  "requirements": [
+    "You are trying to make a quick veggie stirfry to eat with dinner.",
+    "You want to use olive oil in cooking because it is healthy. However, it is blocked by other oil bottles. Make space for it and take it out so that it is close to where you will be cooking.",
+    "You want to organize your vegetables on the cutting board so that the vegetables used first will be closest to the stove. The order is potatoes -> onions -> garlic.",
+    "For vegetables of the same type, you want to organize them by descending order in size.",
+    "You want to use a knife that will cut through all the vegetables placed on the cutting board so it’s not blocked by vegetables or blocking any vegetables.",
+    "You want to use some sauce but do not like spicy sauces. Put it close to where the cooking will be performed.",
+    "You want to cook it at a high flame so use the range that enables that.",
+    "You want to cook for a few days at a time so would like to use a pan that can fit them.",
+    "Add the first of each vegetable you’ll cook first to your preparation.",
+    "You just bought these pans so you want to use something to stir that will not scratch them.",
+    "When you’re done, close everything."
+  ]
+}

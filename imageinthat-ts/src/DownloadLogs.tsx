@@ -1,4 +1,3 @@
-import React from "react";
 import { FunctionTask, useConfiguration } from "@hcikit/react";
 
 export let DownloadLogs: FunctionTask<{ message: string; title: string }> = ({

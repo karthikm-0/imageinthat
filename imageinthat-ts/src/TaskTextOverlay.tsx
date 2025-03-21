@@ -35,7 +35,7 @@ const TaskTextOverlay: React.FC<TaskTextOverlayProps> = ({ taskName }) => {
           <h2 className="font-bold inline-block">Task Requirements:</h2>
         </summary>
         <ul className="list-disc pl-6">
-          {requirements.map((requirement, index) => (
+          {requirements.map((requirement) => (
             <li>{requirement}</li>
           ))}
         </ul>

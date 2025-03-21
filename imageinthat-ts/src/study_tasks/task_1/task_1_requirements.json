@@ -1,0 +1,11 @@
+{
+  "description": "You just got home from buying some groceries. You want the robot to stock your pantry so that all items are easily accessible.",
+  "requirements": [
+    "Item categories: [cereal, chips, soda, cabinet]",
+    "Organize the cereals by height so they are all visible.",
+    "Chips take up a lot of space but are soft. Stack them by flavor, but keep one packet of the green chips on the counter to eat now.",
+    "Organize your soda bottles so that the label is always visible.",
+    "Do not let items of different categories touch each other.",
+    "Do not perform any actions that are not explicitly mentioned in the requirements."
+  ]
+}

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+// @ts-ignore
 import { PathLine } from "react-svg-pathline";
 import { Environment, EnvironmentState } from "./interfaces";
 import { getFullObject } from "./interfaces";
@@ -54,6 +55,8 @@ const PossibleManipulations: React.FC<PossibleManipulationsProps> = ({
     return { x: randomX, y: randomY };
   };
 
+  if (!selectedObject) return null; // ✅ Guard clause
+
   return (
     <>
       {getPossiblePlaces(selectedObject).map((place, index) => {
@@ -107,7 +110,7 @@ const PossibleManipulations: React.FC<PossibleManipulationsProps> = ({
               stroke="transparent"
               strokeWidth={20} // Thicker stroke for easier clicking
               fill="none"
-              onClick={(event) => {
+              onClick={(event: any) => {
                 event.stopPropagation();
                 console.log(`Line clicked from ${selectedObject} to ${place}`);
 

@@ -1,4 +1,9 @@
-import { cloneDeep, map, merge, partition } from "lodash";
+import { merge } from "lodash";
+
+export type TaskRequirement = {
+  description: string;
+  requirements: string[];
+};
 
 // Define the State type
 export type State = {
@@ -13,42 +18,43 @@ export type StateCombination = {
   state: State[];
 };
 
-// export type StepInterface = {
-//   step_annotation: string;
-//   // TODO: consider renaming to objects or object_masks not masks
-//   masks: Array<{
-//     name: string;
-//     image: string;
-//     height: number;
-//     width: number;
-//     x: number;
-//     y: number;
-//     category: string;
-//     class: string;
-//     isReceptacle: boolean;
-//     state: string;
-//     box: [number, number, number, number];
-//     // state: string; // discrete values like on off.
-//   }>;
+// No longer being used
+export type StepInterface = {
+  step_annotation: string;
+  // TODO: consider renaming to objects or object_masks not masks
+  masks: Array<{
+    name: string;
+    image: string;
+    height: number;
+    width: number;
+    x: number;
+    y: number;
+    category: string;
+    class: string;
+    isReceptacle: boolean;
+    state: string;
+    box: [number, number, number, number];
+    // state: string; // discrete values like on off.
+  }>;
 
-//   boxes: Array<{
-//     name: string;
-//     height: number;
-//     width: number;
-//     x: number;
-//     y: number;
-//     category: string;
-//     class: string;
-//     isReceptacle: boolean;
-//     state: string;
-//     possibleStates: string[];
-//     box: [number, number, number, number];
-//   }>;
+  boxes: Array<{
+    name: string;
+    height: number;
+    width: number;
+    x: number;
+    y: number;
+    category: string;
+    class: string;
+    isReceptacle: boolean;
+    state: string;
+    possibleStates: string[];
+    box: [number, number, number, number];
+  }>;
 
-//   image_id: string;
-//   imageObjectURL: string;
-//   caption?: string;
-// };
+  image_id: string;
+  imageObjectURL: string;
+  caption?: string;
+};
 
 export type TextStepInterface = {
   text: string;

@@ -18,7 +18,6 @@ interface TextStepProps {
 const TextStep = forwardRef<HTMLDivElement, TextStepProps>(
   (
     {
-      taskName,
       index,
       selectedIndex,
       setSelectedIndex,

@@ -1,4 +1,4 @@
-import { StepInterface, Environment, EnvironmentState } from "./interfaces";
+import { Environment, EnvironmentState } from "./interfaces";
 
 function removeImageData(env: Environment): {
   envWithoutImages: Environment;
@@ -41,42 +41,6 @@ export function restoreImageData(
   }
 
   return envCopy;
-}
-
-export async function sendStepData(
-  endpoint: string,
-  data?: {
-    text?: string;
-    image?: string;
-    images?: string[];
-    type?: "url" | "raw";
-    stepData?: StepInterface; // Add stepData to the data object
-    stepDataArray?: StepInterface[]; // Add stepDataArray to the data object
-  }
-): Promise<EnvironmentAndEnvironmentStates> {
-  console.log("Endpoint:", endpoint);
-  const port = 5000;
-
-  const host = "localhost";
-  // const host = "172.21.88.58";
-  const url = `http://${host}:${port}${endpoint}`;
-  const response = await fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: data ? JSON.stringify(data) : null, // Send data if provided, otherwise send null
-  });
-
-  // Check if the response contains an array or a single object
-  const responseData = await response.json();
-  if (typeof responseData === "string") {
-    return responseData;
-  } else if (Array.isArray(responseData)) {
-    return responseData as StepInterface[];
-  } else {
-    return responseData as StepInterface;
-  }
 }
 
 export async function sendEnvAndEnvStatesData(

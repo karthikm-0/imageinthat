@@ -1,0 +1,13 @@
+{
+  "description": "You just threw a small party and the guests just left. You want the robot clean up the dishes while you get ready for bed.",
+  "requirements": [
+    "Item categories: [cups, small plates, big plates, spoons, forks, drawer, cabinet]",
+    "To rinse dishes, they must be placed directly underneath where the water flows.",
+    "After rinsing a cup or plate, they should be placed inside the cabinet but without making contact with dry dishes.",
+    "Rinsed utensils like forks and spoons should be put inside the drawer by grouping similar utensils (e.g., fork-fork-spoon-spoon).",
+    "Cups and spoon that are already in the sink should be rinsed and placed in the appropriate areas.",
+    "Transfer the donuts to the bigger plate so that you can clean the smaller plates.",
+    "Clean all plates and forks that made contact with the donuts.",
+    "Do not perform any actions that are not explicitly mentioned in the requirements."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "description": "You are trying to make a quick, but mild veggie stir fry to eat with dinner. You want to use olive oil in cooking because it is healthy.",
+  "requirements": [
+    "Item categories: [vegetables, olive oil (green), other bottles, hot sauce, ketchup, knifes, stove, pan, spatula, cabinet]",
+    "The olive oil (green bottle) is blocked by the other oil bottles. Make space and put it close to where you will be cooking.",
+    "Organize your vegetables on the cutting board so that they are placed in the order in which they will be put in the pan: 1. Potatoes, 2. Onions, 3. Garlic.",
+    "For vegetables of the same type, organize them on the cutting board by descending order in size.",
+    "You want to use a sharp knife to cut all the vegetables. Place it on the cutting board but without blocking the vegetables.",
+    "You prefer ketchup over hot sauce. Place it close to where you will be cooking.",
+    "You want to use a big pan to cook a lot of food. Turn on the burner that will cook the food most evenly using the big pan.",
+    "Put the the big pan on the appropriate burner.",
+    "When you’re done, close everything.",
+    "Do not perform any actions that are not explicitly mentioned in the requirements."
+  ]
+}

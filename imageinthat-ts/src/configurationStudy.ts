@@ -1,10 +1,10 @@
-import { cond } from "lodash";
+import { TaskRequirement } from "./interfaces";
 import task_1 from "./study_tasks/task_1/task_1_requirements.json";
 import task_2 from "./study_tasks/task_2/task_2_requirements.json";
 import task_3 from "./study_tasks/task_3/task_3_requirements.json";
 import task_4 from "./study_tasks/task_4/task_4_requirements.json";
 
-const requirements = {
+const requirements: Record<string, TaskRequirement> = {
   task_1,
   task_2,
   task_3,
@@ -45,7 +45,7 @@ export function fetchConfiguration(pid: number) {
 
   // Generate 8 instances with each condition having 4 tasks in random order
   const assignedTasks = [];
-  const conditions = [];
+  const conditions: any[] = [];
   for (let i = 0; i < 2; i++) {
     const condition = latinSquare[startingRow][i];
     conditions.push(condition);
@@ -77,7 +77,7 @@ export function fetchConfiguration(pid: number) {
   }
 
   // Function to interleave tasks with the new questionnaire
-  function interleaveTasksWithQuestionnaire(tasks, condition) {
+  function interleaveTasksWithQuestionnaire(tasks: string | any[], condition: number) {
     const interleaved = [];
     for (let i = 0; i < tasks.length; i++) {
       const taskName = tasks[i].children[0].taskName;
@@ -90,7 +90,7 @@ export function fetchConfiguration(pid: number) {
 ${requirement.description}
 
 
-${requirement.requirements.map((r) => ` - ${r}`).join("\n")}
+${requirement.requirements.map((r: any) => ` - ${r}`).join("\n")}
 
 *Below is an image that is __similar__ to the task you will be performing.*
 

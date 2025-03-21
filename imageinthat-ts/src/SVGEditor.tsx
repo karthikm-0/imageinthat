@@ -9,7 +9,6 @@ import {
 import { getBackground, getFullObject } from "./interfaces";
 import PossibleManipulations from "./PossibleManipulations";
 import { useExperiment } from "@hcikit/react";
-import { isObjectWithinClosedFixture } from "./imageUtils";
 
 import { highestDimensions } from "./config";
 
@@ -32,7 +31,6 @@ export const SVGEditor: React.FC<{
   envState,
   setEnvAndEnvStates,
   updateEnvAndEnvStates,
-  selectedIndex,
   setSelectedIndex,
   setLastObjectMoved, // Destructure the prop
   showPossibleManipulations = true,
@@ -43,7 +41,7 @@ export const SVGEditor: React.FC<{
   );
   const [hoveredObject, setHoveredObject] = useState<string | null>(null); // New state for hovered object
   const [hoveredFixture, setHoveredFixture] = useState<string | null>(null);
-  const [objectPositions, setObjectPositions] = useState<
+  const [, setObjectPositions] = useState<
     Record<string, { x: number; y: number }>
   >({});
   const [isDragging, setIsDragging] = useState<boolean>(false);
@@ -498,7 +496,7 @@ export const SVGEditor: React.FC<{
 const ObjectComponent: React.FC<{
   object: Environment["objects"][string];
   selected: boolean;
-}> = ({ object, selected }) => {
+}> = ({ object }) => {
   return (
     <g>
       <image width={object.width} height={object.height} href={object.image} />

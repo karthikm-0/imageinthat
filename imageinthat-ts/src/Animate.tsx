@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   EnvironmentAndEnvironmentStates,
   EnvironmentState,
@@ -18,7 +18,7 @@ const highestHeight = highestDimensions.HIGHEST_HEIGHT;
 export const AnimateBetweenSteps: React.FC<{
   envAndEnvStates: EnvironmentAndEnvironmentStates;
 }> = ({ envAndEnvStates }) => {
-  const [curStep, setCurStep] = useState(1);
+  const [curStep] = useState(1);
 
   return (
     <StepVisualisation

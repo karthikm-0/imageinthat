@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import Timeline from "./Timeline";
 import TextTimeline from "./TextTimeline";
 import Experiment, {
@@ -9,8 +8,6 @@ import Experiment, {
   createUpload,
 } from "@hcikit/react";
 import { __INDEX__ } from "@hcikit/workflow";
-import GetParticipantID from "./GetParticipantID";
-import { fetchConfiguration } from "./configurationStudy";
 import { configuration } from "./configuration";
 import { DownloadLogs } from "./DownloadLogs";
 import GoogleFormQuestionnaire from "./GoogleFormQuestionnaire";

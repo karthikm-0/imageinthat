@@ -53,7 +53,9 @@ const LanguageInput: React.FC<LanguageInputProps> = ({
 
       // Once we get the data back, lets set the new state
       setEnvAndEnvStates((prevEnvAndEnvStates) => {
-        const currentEnvState = prevEnvAndEnvStates.envStates[selectedIndex!];
+        const currentEnvState = prevEnvAndEnvStates.envStates[
+          selectedIndex!
+        ] as EnvironmentState;
 
         if (
           selectedIndex !== null &&
@@ -68,12 +70,15 @@ const LanguageInput: React.FC<LanguageInputProps> = ({
               currentEnvState,
               updatedEnvState,
               ...prevEnvAndEnvStates.envStates.slice(selectedIndex + 1),
-            ],
+            ] as EnvironmentState[],
           };
         } else {
           return {
             env: prevEnvAndEnvStates.env,
-            envStates: [...prevEnvAndEnvStates.envStates, updatedEnvState],
+            envStates: [
+              ...prevEnvAndEnvStates.envStates,
+              updatedEnvState,
+            ] as EnvironmentState[],
           };
         }
       });

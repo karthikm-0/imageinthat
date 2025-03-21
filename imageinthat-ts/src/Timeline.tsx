@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import { firstProgramStep } from "./firstProgramStep";
 import {
   StepInterface,
   EnvironmentAndEnvironmentStates,
@@ -12,11 +11,7 @@ import Step from "./Step";
 import Autocomplete from "./Autocomplete";
 import { getCaptionForStates } from "./captioning";
 import { SVGEditor } from "./SVGEditor";
-import { withGridItem } from "@hcikit/react";
-import { useExperiment, useConfiguration } from "@hcikit/react";
-import { generateCombinedImage } from "./imageUtils";
-
-import TaskTextOverlay from "./TaskTextOverlay";
+import { useExperiment } from "@hcikit/react";
 
 import { highestDimensions } from "./config";
 
@@ -47,9 +42,7 @@ const Timeline: React.FC<TimelineProps> = ({
   const [captionQueue, setCaptionQueue] = useState<number[]>([]);
   const [isCaptioning, setIsCaptioning] = useState(false);
 
-  const { advance, log } = useExperiment();
-  const config = useConfiguration();
-  window.config = config;
+  const { log } = useExperiment();
 
   useEffect(() => {
     // Fetch the JSON data and update the state
@@ -83,68 +76,48 @@ const Timeline: React.FC<TimelineProps> = ({
         });
       })
       .catch((error) => {
-        // console.error("Error loading JSON:", error);
-        console.log("Selected Index:", selectedIndex);
-        console.log("Last Object Moved:", lastObjectMoved);
-
-        const initializeStep = async () => {
-          console.log(
-            "liveImageData is not null, proceeding to create new step"
-          );
-          const envAndEnvStates = await firstProgramStep("/start.png");
-          console.log(envAndEnvStates.env);
-          console.log(envAndEnvStates.envStates);
-          setEnvAndEnvStates((prevEnvAndEnvStates) => ({
-            env: envAndEnvStates.env,
-            envStates: [
-              ...prevEnvAndEnvStates.envStates, // Append new envStates to the existing list
-              ...envAndEnvStates.envStates,
-            ],
-          }));
-        };
-
-        initializeStep();
+        console.error("Error loading JSON:", error);
       });
   }, []);
 
-  const handleAdvance = () => {
-    // Log all the environment states
-    log({
-      type: "advance",
-      envStates: envAndEnvStates.envStates,
-    });
-    // console.log(config);
-    advance();
-  };
+  // const handleAdvance = () => {
+  //   // Log all the environment states
+  //   log({
+  //     type: "advance",
+  //     envStates: envAndEnvStates.envStates,
+  //   });
+  //   // console.log(config);
+  //   advance();
+  // };
 
-  const handleSaveImage = async () => {
-    if (selectedIndex !== null) {
-      const currentState = envAndEnvStates.envStates[selectedIndex];
-      const imageDataUrl = await generateCombinedImage(
-        envAndEnvStates.env,
-        currentState
-      );
-      const link = document.createElement("a");
-      link.href = imageDataUrl;
-      link.download = `env_state_${selectedIndex}.png`;
-      link.click();
-    }
-  };
+  // const handleSaveImage = async () => {
+  //   if (selectedIndex !== null) {
+  //     const currentState = envAndEnvStates.envStates[selectedIndex];
+  //     const imageDataUrl = await generateCombinedImage(
+  //       envAndEnvStates.env,
+  //       currentState
+  //     );
+  //     const link = document.createElement("a");
+  //     link.href = imageDataUrl;
+  //     link.download = `env_state_${selectedIndex}.png`;
+  //     link.click();
+  //   }
+  // };
 
-  const handleSaveJSON = () => {
-    const data = {
-      envAndEnvStates: {
-        env: envAndEnvStates.env,
-        envStates: envAndEnvStates.envStates,
-      },
-    };
-    const json = JSON.stringify(data, null, 2);
-    const blob = new Blob([json], { type: "application/json" });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = `env_and_envStates.json`;
-    link.click();
-  };
+  // const handleSaveJSON = () => {
+  //   const data = {
+  //     envAndEnvStates: {
+  //       env: envAndEnvStates.env,
+  //       envStates: envAndEnvStates.envStates,
+  //     },
+  //   };
+  //   const json = JSON.stringify(data, null, 2);
+  //   const blob = new Blob([json], { type: "application/json" });
+  //   const link = document.createElement("a");
+  //   link.href = URL.createObjectURL(blob);
+  //   link.download = `env_and_envStates.json`;
+  //   link.click();
+  // };
 
   const generateCaption = async (
     currentState: EnvironmentState,
@@ -224,7 +197,7 @@ const Timeline: React.FC<TimelineProps> = ({
   }, [envAndEnvStates.envStates.length]);
 
   const handleUserManipulationUpdateEnvStates = (
-    env: Environment,
+    _env: Environment,
     envState: EnvironmentState
   ) => {
     console.log("Updating envState with user manipulation. ", envState);
@@ -313,7 +286,7 @@ const Timeline: React.FC<TimelineProps> = ({
 
         return {
           ...prevEnvAndEnvStates,
-          envStates: newEnvStates,
+          envStates: newEnvStates as EnvironmentState[],
         };
       } else {
         setLastObjectMoved(changedObject);
@@ -341,7 +314,7 @@ const Timeline: React.FC<TimelineProps> = ({
 
         return {
           ...prevEnvAndEnvStates,
-          envStates: newEnvStates,
+          envStates: newEnvStates as EnvironmentState[],
         };
       }
     });
@@ -400,7 +373,7 @@ const Timeline: React.FC<TimelineProps> = ({
             onWheel={(e) => {
               e.currentTarget.scrollLeft += e.deltaY;
             }}
-            className="flex w-full max-w-full max-w-[1936px] gap-6 p-10 mt-96 overflow-x-scroll rounded shadow bg-sky-100"
+            className="flex w-full max-w-[1936px] gap-6 p-10 mt-96 overflow-x-scroll rounded shadow bg-sky-100"
           >
             {envAndEnvStates.envStates.map((envState, index) => (
               <Step

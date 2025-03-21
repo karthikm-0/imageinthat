@@ -80,16 +80,17 @@ const Autocomplete: React.FC<AutocompleteProps> = ({
     );
   };
 
-  const handleCaptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newCaption = e.target.value;
-    setCaption(newCaption);
-    setEnvAndEnvStates((prevEnvAndEnvStates) => {
-      const newEnvStates = prevEnvAndEnvStates.envStates.map((state, i) =>
-        i === index ? { ...state, caption: newCaption } : state
-      );
-      return { ...prevEnvAndEnvStates, envStates: newEnvStates };
-    });
-  };
+  const handleCaptionChange =
+    (index: number) => (e: React.ChangeEvent<HTMLInputElement>) => {
+      const newCaption = e.target.value;
+      setCaption(newCaption);
+      setEnvAndEnvStates((prevEnvAndEnvStates) => {
+        const newEnvStates = prevEnvAndEnvStates.envStates.map((state, i) =>
+          i === index ? { ...state, caption: newCaption } : state
+        );
+        return { ...prevEnvAndEnvStates, envStates: newEnvStates };
+      });
+    };
 
   return (
     <>
@@ -141,7 +142,7 @@ const Autocomplete: React.FC<AutocompleteProps> = ({
                 <input
                   type="text"
                   value={caption}
-                  onChange={handleCaptionChange}
+                  onChange={handleCaptionChange(index)} // ✅ index is now passed correctly
                   onBlur={() => setIsEditingCaption(false)}
                   className="w-full p-1 border border-gray-300 rounded"
                   autoFocus
